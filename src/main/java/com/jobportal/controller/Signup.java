@@ -1,5 +1,8 @@
 package com.jobportal.controller;
 
+import com.jobportal.model.User;
+import com.jobportal.services.UserService;
+import com.jobportal.utils.Validation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,16 +31,37 @@ public class Signup {
 
     @FXML
     void signUpBtn(ActionEvent event) {
-        System.out.println(email.getText());
-        System.out.println(firstName.getText());
-        System.out.println(lastName.getText());
-        System.out.println(password.getText());
+
+        //extracting text from  fields
+        String firstname = firstName.getText();
+        String lastname = lastName.getText();
+        String userEmail = email.getText();
+        String userPassword = password.getText();
+
+        if (!(Validation.name(firstname) && Validation.name(lastname) && Validation.isEmail(userEmail) && Validation.password(userPassword))) {
+            return;
+        }
+
+        //creating user object
+        User user = new User(firstname, lastname, userEmail, userPassword);
+
+        //Performing db operation
+        UserService service = new UserService();
+        boolean registered = service.registerUser(user);
+
+        //check for registration
+        if (registered) {
+            System.out.println("User has been registered");
+        } else {
+            System.out.println("Failed to register user");
+        }
+
     }
 
     @FXML
-    void navigateToLogin(ActionEvent event)throws IOException {
+    void navigateToLogin(ActionEvent event) throws IOException {
         //navigate to SignUp page
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jobportal/Login.fxml")) ;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jobportal/Login.fxml"));
         Parent root = loader.load();
         // Get the stage and set the new scene
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
