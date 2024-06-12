@@ -1,5 +1,7 @@
 package com.jobportal.model;
 
+import com.jobportal.utils.PasswordHash;
+
 public class User {
     private String firstName;
     private String lastName ;
@@ -9,7 +11,7 @@ public class User {
     public User(String firstName , String lastName, String password, String email) {
         this.firstName = firstName;
         this.lastName  =lastName ;
-        this.password = password;
+        this.password = PasswordHash.hashPassword(password);
         this.email = email;
     }
 
@@ -45,4 +47,5 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
