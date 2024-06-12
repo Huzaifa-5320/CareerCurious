@@ -31,13 +31,7 @@ public class UserService {
             int affectedRows = statement.executeUpdate();
 
             //check if row inserted successfully
-            if (affectedRows > 0) {
-                System.out.println("User registered successfully");
-                return true;
-            } else {
-                System.out.println("Failed to register a user.");
-                return false;
-            }
+            return affectedRows>0 ;
 
         } catch (SQLException e) {
             System.out.println("Exception occured while registering user");
