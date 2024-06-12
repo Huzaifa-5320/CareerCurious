@@ -8,7 +8,7 @@ public class User {
     private String password;
     private String email;
 
-    public User(String firstName , String lastName, String password, String email) {
+    public User(String firstName , String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName  =lastName ;
         this.password = PasswordHash.hashPassword(password);
