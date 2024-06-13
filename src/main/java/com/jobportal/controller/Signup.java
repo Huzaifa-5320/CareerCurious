@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,6 +31,10 @@ public class Signup {
     private PasswordField password;
 
     @FXML
+    private Label errormsg;
+
+
+    @FXML
     void signUpBtn(ActionEvent event) {
 
         //extracting text from  fields
@@ -38,7 +43,18 @@ public class Signup {
         String userEmail = email.getText();
         String userPassword = password.getText();
 
-        if (!(Validation.name(firstname) && Validation.name(lastname) && Validation.isEmail(userEmail) && Validation.password(userPassword))) {
+        //Validating fields and displaying custom error messages
+
+        if (!(Validation.name(firstname) && Validation.name(lastname))) {
+            errormsg.setText("Name length should be between 3 to 10");
+            return;
+        }
+        else if (!Validation.isEmail(userEmail)) {
+            errormsg.setText("Email isn't is valid");
+            return;
+        }
+        else if (!Validation.password(userPassword)) {
+            errormsg.setText("Password length should be between 8 to 16");
             return;
         }
 
@@ -57,10 +73,12 @@ public class Signup {
 
         //check for registration
         if (registered) {
+            errormsg.setText("");
             System.out.println("User has been registered");
         }
         else {
             System.out.println("Failed to register user");
+            errormsg.setText("Failed to register user");
         }
 
     }
