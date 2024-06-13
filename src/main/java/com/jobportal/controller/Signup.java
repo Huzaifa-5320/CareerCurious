@@ -49,6 +49,12 @@ public class Signup {
         UserService service = new UserService();
         boolean registered = service.registerUser(user);
 
+        //clearing textfields
+        firstName.clear();
+        lastName.clear();
+        email.clear();
+        password.clear();
+
         //check for registration
         if (registered) {
             System.out.println("User has been registered");
