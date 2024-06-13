@@ -52,7 +52,8 @@ public class Signup {
         //check for registration
         if (registered) {
             System.out.println("User has been registered");
-        } else {
+        }
+        else {
             System.out.println("Failed to register user");
         }
 
