@@ -58,11 +58,21 @@ public class Signup {
             return;
         }
 
-        //creating user object
-        User user = new User(firstname, lastname, userEmail, userPassword);
-
         //Performing db operation
         UserService service = new UserService();
+
+        //checking if account exists with this email
+        User isUser = service.getUserByEmail(userEmail);
+
+        if (isUser != null) {
+            errormsg.setText("User already exists with this email");
+            return;
+        }
+
+        //creating user object if user doesn't exists
+        User user = new User(firstname, lastname, userEmail, userPassword);
+
+        //inserting in database
         boolean registered = service.registerUser(user);
 
         //clearing textfields
