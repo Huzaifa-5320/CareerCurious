@@ -31,10 +31,15 @@ public class UserService {
             int affectedRows = statement.executeUpdate();
 
             //check if row inserted successfully
-            return affectedRows>0 ;
+            return affectedRows > 0;
 
+            //Exceptions
         } catch (SQLException e) {
             System.out.println("Exception occured while registering user");
+            e.printStackTrace();
+            return false;
+        } catch (ClassNotFoundException e) {
+            System.out.println("Failed to find driver class");
             e.printStackTrace();
             return false;
         }
