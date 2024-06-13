@@ -12,7 +12,7 @@ public class UserService {
     public boolean registerUser(User user) {
 
         //Query to register a new user
-        String query = "INSERT INTO USERS(firstName,lastName,email,password) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO USERS(firstName,lastName,email,password) VALUES (?,?,?,?)";
 
         //connection to database
         try (Connection connection = DatabaseConnection.getConnection()) {
