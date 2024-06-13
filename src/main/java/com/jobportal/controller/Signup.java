@@ -46,15 +46,15 @@ public class Signup {
         //Validating fields and displaying custom error messages
 
         if (!(Validation.name(firstname) && Validation.name(lastname))) {
-            errormsg.setText("Name length should be between 3 to 10");
+            errormsg.setText("* Name length should be between 3 to 10");
             return;
         }
         else if (!Validation.isEmail(userEmail)) {
-            errormsg.setText("Email isn't is valid");
+            errormsg.setText("* Email isn't is valid");
             return;
         }
         else if (!Validation.password(userPassword)) {
-            errormsg.setText("Password length should be between 8 to 16");
+            errormsg.setText("* Password length should be between 8 to 16");
             return;
         }
 
@@ -78,7 +78,7 @@ public class Signup {
         }
         else {
             System.out.println("Failed to register user");
-            errormsg.setText("Failed to register user");
+            errormsg.setText("* Failed to register user");
         }
 
     }
