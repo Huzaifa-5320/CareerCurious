@@ -22,6 +22,9 @@ public class UserService {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(REGISTER_USER_QUERY)) {
 
+            //hashing password for security concerns
+            user.setPassword(PasswordHash.hashPassword(user.getPassword()));
+
             // Setting parameter values in the prepared statement
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
