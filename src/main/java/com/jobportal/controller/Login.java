@@ -51,8 +51,7 @@ public class Login {
 
         //checking for valid credentials
         if (!service.loginVerification(userEmail, userPassword)) {
-
-            System.out.println("in error");
+            
             //setting error message
             errormsg.setText("* Invalid Credentials");
 
