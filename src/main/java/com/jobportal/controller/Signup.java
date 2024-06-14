@@ -65,7 +65,7 @@ public class Signup {
         User isUser = service.getUserByEmail(userEmail);
 
         if (isUser != null) {
-            errormsg.setText("User already exists with this email");
+            errormsg.setText("* User already exists with this email");
             return;
         }
 
