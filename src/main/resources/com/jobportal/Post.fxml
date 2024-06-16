@@ -11,54 +11,79 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jobportal.controller.Post">
+<AnchorPane prefHeight="500.0" prefWidth="700.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.jobportal.controller.Post">
     <children>
-        <AnchorPane layoutX="-1.0" layoutY="-16.0" prefHeight="66.0" prefWidth="700.0" style="-fx-background-color: #250885;">
+        <AnchorPane layoutX="-1.0" layoutY="-16.0" prefHeight="66.0"
+                    prefWidth="700.0" style="-fx-background-color: #250885;">
             <children>
-                <Text fill="WHITE" layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CareerCurious" wrappingWidth="130.1366844177246">
+                <Text fill="WHITE" layoutX="14.0" layoutY="49.0"
+                      strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="CareerCurious" wrappingWidth="130.1366844177246">
                     <font>
-                        <Font name="Arial Bold Italic" size="18.0" />
+                        <Font name="Arial Bold Italic" size="18.0"/>
                     </font>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
+                        <Cursor fx:constant="DEFAULT"/>
                     </cursor>
                     <effect>
-                        <DropShadow height="13.63" radius="4.3675" spread="0.05" width="5.84" />
+                        <DropShadow height="13.63" radius="4.3675" spread="0.05"
+                                    width="5.84"/>
                     </effect>
                 </Text>
-                <Hyperlink layoutX="165.0" layoutY="31.0" text="Home" textFill="WHITE">
+                <Hyperlink layoutX="165.0" layoutY="31.0" text="Home"
+                           textFill="WHITE">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Hyperlink>
-                <Hyperlink layoutX="224.0" layoutY="31.0" text="Notifications" textFill="WHITE">
+                <Hyperlink layoutX="224.0" layoutY="31.0" text="Notifications"
+                           textFill="WHITE">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Hyperlink>
-                <Hyperlink layoutX="325.0" layoutY="31.0" text="AboutUs" textFill="WHITE">
+                <Hyperlink layoutX="325.0" layoutY="31.0" text="AboutUs"
+                           textFill="WHITE">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Hyperlink>
             </children>
         </AnchorPane>
-      <Label layoutX="225.0" layoutY="87.0" prefHeight="35.0" prefWidth="249.0" style="-fx-background-color: #e4ebe5;" text="Create your job post !" textAlignment="JUSTIFY" textFill="#030055">
-         <font>
-            <Font name="System Bold Italic" size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="title" layoutX="153.0" layoutY="149.0" prefHeight="25.0" prefWidth="393.0" promptText="Title" />
-      <TextField fx:id="companyName" layoutX="152.0" layoutY="185.0" prefHeight="25.0" prefWidth="393.0" promptText="Company name" />
-      <TextField fx:id="location" layoutX="152.0" layoutY="224.0" prefHeight="25.0" prefWidth="393.0" promptText="Location" />
-      <TextField fx:id="pay" layoutX="153.0" layoutY="262.0" prefHeight="25.0" prefWidth="393.0" promptText="Pay in Rupees" />
-      <TextArea fx:id="description" layoutX="153.0" layoutY="306.0" prefHeight="138.0" prefWidth="393.0" promptText="Job Description (minimum 20 words maximum 190 words" scrollTop="12.0" wrapText="true" />
-      <Button layoutX="571.0" layoutY="418.0" mnemonicParsing="false" onAction="#postJob" prefHeight="27.0" prefWidth="63.0" style="-fx-background-color: #030c8a;" text="Post" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Label text="Label" />
-      <Label fx:id="errormsg" layoutX="161.0" layoutY="461.0" prefHeight="17.0" prefWidth="303.0" textFill="RED" />
+        <Label layoutX="225.0" layoutY="87.0" prefHeight="35.0"
+               prefWidth="249.0" style="-fx-background-color: #e4ebe5;"
+               text="Create your job post !" textAlignment="JUSTIFY"
+               textFill="#030055">
+            <font>
+                <Font name="System Bold Italic" size="24.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="title" layoutX="153.0" layoutY="149.0"
+                   prefHeight="25.0" prefWidth="393.0" promptText="Title"/>
+        <TextField fx:id="companyName" layoutX="152.0" layoutY="185.0"
+                   prefHeight="25.0" prefWidth="393.0"
+                   promptText="Company name"/>
+        <TextField fx:id="region" layoutX="152.0" layoutY="224.0"
+                   prefHeight="25.0" prefWidth="393.0" promptText="Location"/>
+        <TextField fx:id="pay" layoutX="153.0" layoutY="262.0" prefHeight="25.0"
+                   prefWidth="393.0" promptText="Pay in Rupees"/>
+        <TextArea fx:id="description" layoutX="153.0" layoutY="306.0"
+                  prefHeight="138.0" prefWidth="393.0"
+                  promptText="Job Description (minimum 20 words maximum 190 words"
+                  scrollTop="12.0" wrapText="true"/>
+        <Button layoutX="571.0" layoutY="418.0" mnemonicParsing="false"
+                onAction="#postJob" prefHeight="27.0" prefWidth="63.0"
+                style="-fx-background-color: #030c8a;" text="Post"
+                textFill="WHITE">
+            <font>
+                <Font size="13.0"/>
+            </font>
+        </Button>
+        <Label text="Label"/>
+        <Label fx:id="errormsg" layoutX="161.0" layoutY="461.0"
+               prefHeight="17.0" prefWidth="303.0" textFill="RED"/>
     </children>
 </AnchorPane>
