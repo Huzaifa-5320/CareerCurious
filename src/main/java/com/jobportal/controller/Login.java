@@ -25,10 +25,9 @@ public class Login {
     @FXML
     private Label errormsg;
 
-
     @FXML
     void navigateToSignUp(ActionEvent event) throws IOException {
-        //navigate to SignUp page
+        // Navigate to SignUp page
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jobportal/Signup.fxml"));
         Parent root = loader.load();
         // Get the stage and set the new scene
@@ -36,33 +35,43 @@ public class Login {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
 
+    void navigateToHome(ActionEvent event) throws IOException {
+        // Navigate to Home
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jobportal/Home.fxml"));
+        Parent root = loader.load();
+        // Get the stage and set the new scene
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     void loginBtn(ActionEvent event) {
-
-        //extracting text
+        // Extracting text
         String userEmail = email.getText();
         String userPassword = password.getText();
 
-        //creating object for services
+        // Creating object for services
         UserService service = new UserService();
 
-        //checking for valid credentials
+        // Checking for valid credentials
         if (!service.loginVerification(userEmail, userPassword)) {
-            
-            //setting error message
+            // Setting error message
             errormsg.setText("* Invalid Credentials");
-
-            //clearing fields
+            // Clearing fields
             email.clear();
             password.clear();
-
             return;
         }
         errormsg.setText("");
-        System.out.println("Congratulations you are logged in");
+        try {
+            navigateToHome(event);
+        } catch (IOException e) {
+            System.out.println("Exception occurred while loading home page");
+            e.printStackTrace();
+        }
     }
-
 }
