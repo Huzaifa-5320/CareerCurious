@@ -18,7 +18,7 @@ public class Post {
     private Label errormsg;
 
     @FXML
-    private TextField location;
+    private TextField region;
 
     @FXML
     private TextField pay;
@@ -29,6 +29,18 @@ public class Post {
     @FXML
     void postJob(ActionEvent event) {
 
-    }
+        String jobTitle = title.getText();
+        String jobCompanyName = companyName.getText();
+        String jobLocation = region.getText();
+        String jobPay = pay.getText();
+        String jobDescription = description.getText();
 
+
+        if (jobTitle.isEmpty() || jobCompanyName.isEmpty() || jobLocation.isEmpty() || jobPay.isEmpty() || jobDescription.isEmpty()) {
+            errormsg.setText("Please fill in all fields.");
+        }
+        else {
+            errormsg.setText("");
+        }
+    }
 }
