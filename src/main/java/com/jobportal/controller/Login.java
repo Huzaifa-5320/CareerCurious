@@ -1,5 +1,6 @@
 package com.jobportal.controller;
 
+import com.jobportal.model.UserSession;
 import com.jobportal.services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,7 +67,15 @@ public class Login {
             password.clear();
             return;
         }
+
+        //if everything is fine remove error message
         errormsg.setText("");
+
+        // Set the logged-in user's email in the UserSession
+        UserSession.getInstance().setEmail(userEmail);
+
+
+        //navigating to home page
         try {
             navigateToHome(event);
         } catch (IOException e) {
@@ -74,4 +83,5 @@ public class Login {
             e.printStackTrace();
         }
     }
+
 }
