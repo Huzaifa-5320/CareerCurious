@@ -1,5 +1,8 @@
 package com.jobportal.controller;
 
+import com.jobportal.model.UserSession;
+import com.jobportal.services.PostService;
+import com.jobportal.utils.Navigation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -83,7 +86,16 @@ public class Post {
         // If all checks pass, proceed with posting the job
         errormsg.setText("");
 
-        com.jobportal.model.Post post = new com.jobportal.model.Post(jobTitle, jobCompanyName, jobLocation, jobPay, jobEmail, jobDescription) ;
+        //created a post object
+        com.jobportal.model.Post post = new com.jobportal.model.Post(jobTitle, jobCompanyName, jobLocation, jobPay, UserSession.getInstance().getEmail(), jobDescription);
+
+        PostService service = new PostService();
+        if (!service.postJob(post)) {
+            errormsg.setText("Failed to post the job. Some error occured");
+            return;
+        }
+        //Navigating to Home page if the job is posted successfully
+        Navigation.navigateTo(event, "/com/jobportal/Home.fxml");
     }
 
     // Method for checking if entered country's name is valid or not
