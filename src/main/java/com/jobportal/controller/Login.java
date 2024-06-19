@@ -2,6 +2,7 @@ package com.jobportal.controller;
 
 import com.jobportal.model.UserSession;
 import com.jobportal.services.UserService;
+import com.jobportal.utils.Navigation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,16 +39,6 @@ public class Login {
         stage.show();
     }
 
-    void navigateToHome(ActionEvent event) throws IOException {
-        // Navigate to Home
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jobportal/Home.fxml"));
-        Parent root = loader.load();
-        // Get the stage and set the new scene
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     void loginBtn(ActionEvent event) {
@@ -76,12 +67,7 @@ public class Login {
 
 
         //navigating to home page
-        try {
-            navigateToHome(event);
-        } catch (IOException e) {
-            System.out.println("Exception occurred while loading home page");
-            e.printStackTrace();
-        }
+        Navigation.navigateTo(event,"/com/jobportal/Home.fxml");
     }
 
 }
