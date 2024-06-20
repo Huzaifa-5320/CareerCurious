@@ -13,6 +13,7 @@ public class PostService {
 
     private static final String ADD_POST_QUERY = "INSERT INTO POST(title,companyName,location,pay,email,description) VALUES(?,?,?,?,?,?)";
     private static final String GET_POST_QUERY = "SELECT * FROM Post";
+    private static final String ADD_NEW_APPLICATION_QUERY = "INSERT INTO applications(post_id,applicant_email) VALUES(?,?)";
 
     public boolean postJob(Post post) {
         try (Connection connection = DatabaseConnection.getConnection()) {
@@ -50,9 +51,11 @@ public class PostService {
                 String pay = resultSet.getString("pay");
                 String email = resultSet.getString("email");
                 String description = resultSet.getString("description");
+                int postId = resultSet.getInt("post_Id") ;
 
                 // Create a Post object and add it to the list
                 Post post = new Post(title, companyName, location, pay, email, description);
+                post.setId(postId);
                 posts.add(post);
             }
         } catch (SQLException e) {
@@ -61,4 +64,24 @@ public class PostService {
         }
         return posts;
     }
+
+    // method which creates a user's application  for job
+    public boolean applyToJob(int post_id, String email) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(ADD_NEW_APPLICATION_QUERY);
+
+            //setting parameter's values
+            statement.setInt(1,post_id);
+            statement.setString(2,email);
+
+            int affectedRows = statement.executeUpdate();
+            return  affectedRows>0 ;
+
+        } catch (SQLException e) {
+            System.out.println("SQL ERROR: \n");
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
+
