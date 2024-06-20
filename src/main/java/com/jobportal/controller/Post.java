@@ -31,6 +31,12 @@ public class Post {
     @FXML
     private TextField title;
 
+
+    @FXML
+    void navigateToHome(ActionEvent event) {
+        Navigation.navigateTo(event, "/com/jobportal/Home.fxml");
+    }
+
     @FXML
     void postJob(ActionEvent event) {
         // Extracting text from fields
@@ -96,6 +102,8 @@ public class Post {
         }
         //Navigating to Home page if the job is posted successfully
         Navigation.navigateTo(event, "/com/jobportal/Home.fxml");
+
+        //TODO: use alert when the job is posted successfully
     }
 
     // Method for checking if entered country's name is valid or not
