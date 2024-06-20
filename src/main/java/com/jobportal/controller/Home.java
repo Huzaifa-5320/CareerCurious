@@ -9,13 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -111,9 +112,29 @@ public class Home implements Initializable {
         applyButton.setLayoutY(330.0);
         applyButton.setStyle("-fx-background-color: #071091; -fx-text-fill: white;");
 
+        applyButton.setOnAction(event -> applyToJob(post.getId(), post.getEmail()));
+
         //Adding all the children to pane
         pane.getChildren().addAll(titleLabel, companyLabel, locationLabel, descriptionLabel, applyButton);
 
         return pane;
+    }
+
+    private void showAlert(String title, String headerText, String contentText, AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
+
+    private void applyToJob(int post_id, String email) {
+        boolean success = postService.applyToJob(post_id, email);
+        if (success) {
+            showAlert("Application Successful", "Your application has been submitted.", "Thanls for applying", AlertType.INFORMATION);
+        }
+        else {
+            showAlert("Application Failed", "There was an error submitting your application.", "Please try again later.", AlertType.ERROR);
+        }
     }
 }
