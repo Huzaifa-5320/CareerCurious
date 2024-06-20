@@ -34,19 +34,23 @@
                     </effect>
                 </Text>
                 <Hyperlink layoutX="165.0" layoutY="31.0" text="Home"
-                           textFill="WHITE">
+                           textFill="WHITE"
+                           style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent;"
+                           onAction="#navigateToHome">
                     <font>
                         <Font size="14.0"/>
                     </font>
                 </Hyperlink>
                 <Hyperlink layoutX="224.0" layoutY="31.0" text="Notifications"
-                           textFill="WHITE">
+                           textFill="WHITE"
+                           style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
                     <font>
                         <Font size="14.0"/>
                     </font>
                 </Hyperlink>
                 <Hyperlink layoutX="325.0" layoutY="31.0" text="AboutUs"
-                           textFill="WHITE">
+                           textFill="WHITE"
+                           style="-fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
                     <font>
                         <Font size="14.0"/>
                     </font>
