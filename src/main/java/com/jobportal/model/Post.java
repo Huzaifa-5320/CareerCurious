@@ -1,5 +1,7 @@
 package com.jobportal.model;
 
+import java.util.ArrayList;
+
 public class Post {
     private String title;
     private String companyName;
@@ -7,6 +9,7 @@ public class Post {
     private String pay;
     private String email;
     private String description;
+    private int postId  ;
 
     public Post(String title, String companyName, String location, String pay, String email, String description) {
         this.title = title;
@@ -65,5 +68,11 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public int getId(){
+        return postId ;
+    }
+    public void setId(int postId){
+        this.postId = postId ;
     }
 }
